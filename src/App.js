@@ -3,8 +3,10 @@ import './App.css';
 import styled from 'styled-components';
 import Week from './calendar/week/Week';
 import React, { useState } from 'react';
-import { DEFAULT_AVAILABILITY } from './utils/utlis';
+import { DAY_DROPDOWN_OPTIONS, DEFAULT_AVAILABILITY, TIME_DROPDOWN_OPTIONS } from './utils/utlis';
 import Check from './calendar/toolbar/Check';
+import Dropdown from './calendar/toolbar/Dropdown';
+import Form from './calendar/toolbar/Form';
 
 const AppContainter = styled.div`
   background-color:gray;
@@ -25,6 +27,9 @@ const CalendarContainer = styled.div`
 const Toolbar = styled.div`
    grid-area: 1 / 1 / 6 / 2;
    background-color:pink;
+   display:flex;
+   margin:auto;
+   width:100%;
   `;
 
 export const AvailabilityContext = React.createContext();
@@ -35,7 +40,7 @@ function App() {
     <AvailabilityContext.Provider value={{ state, setState }}>
       <AppContainter className="App">
         <Toolbar>
-          <Check></Check>
+          <Form />
         </Toolbar>
         <CalendarContainer>
           <Week></Week>

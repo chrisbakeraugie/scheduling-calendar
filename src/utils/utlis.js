@@ -11,3 +11,27 @@ export const DEFAULT_AVAILABILITY = () => {
     }
     return arr;
 }
+
+export const DAY_DROPDOWN_OPTIONS = () => {
+    let arr = [];
+    DAYS_OF_WEEK.forEach(day => {
+        arr.push({ label: day, value: day })
+    })
+    return arr;
+}
+
+export const TIME_DROPDOWN_OPTIONS = () => {
+    let arr = [];
+    for (let i = 0; i <= 23; i++) {
+        if (i === 0) {
+            arr.push({ label: "12 AM", value: i })
+        } else if (i === 12) {
+            arr.push({ label: "12 PM", value: i })
+        } else if (i < 12) {
+            arr.push({ label: i + " AM", value: i })
+        } else {
+            arr.push({ label: (i - 12) + " PM", value: i })
+        }
+    }
+    return arr;
+}
