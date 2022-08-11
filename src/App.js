@@ -1,24 +1,38 @@
 import logo from './logo.svg';
 import './App.css';
+import styled from 'styled-components';
+import Week from './calendar/week/Week';
+
+const AppContainter = styled.div`
+  background-color:gray;
+  height:100vh;
+  overflow-y:hidden;
+  display: grid;
+  grid-template-columns: 0.5fr repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+`;
+
+
+const CalendarContainer = styled.div`  
+  grid-area: 1 / 2 / 6 / 6; 
+  background-color:palegreen;
+  `
+
+const Toolbar = styled.div`
+   grid-area: 1 / 1 / 6 / 2;
+   background-color:pink;
+  `;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContainter className="App">
+      <Toolbar></Toolbar>
+      <CalendarContainer>
+        <Week></Week>
+      </CalendarContainer>
+    </AppContainter>
   );
 }
 
