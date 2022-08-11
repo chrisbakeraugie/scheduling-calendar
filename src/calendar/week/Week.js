@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import Day from '../day/Day';
 import styled from 'styled-components';
+import { DAYS_OF_WEEK } from '../../utils/utlis';
 
 const WeekFlex = styled.div`
 width:100%;
@@ -11,10 +12,10 @@ justify-content:space-evenly;
 
 
 const Week = () => {
-    const days = useMemo(() => ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], [])
+    const days = useMemo(() => DAYS_OF_WEEK, [])
     return (
         <WeekFlex>
-            {days.map((day) => <Day>{day}</Day>)}
+            {days.map((day, index) => <Day key={day + "" + index}>{day}</Day>)}
         </WeekFlex>
     )
 }
