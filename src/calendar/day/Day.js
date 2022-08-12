@@ -39,7 +39,7 @@ const paperSX = {
     },
     '@media (max-width: 500px)': {
         width: '80%',
-      },
+    },
 }
 
 const DayHeader = styled.div`
@@ -83,8 +83,8 @@ const Day = (props) => {
                                 </StyledText>
                             </Paper>
                         );
-                    } 
-                    return <></>
+                    }
+                    return <React.Fragment key={index}></React.Fragment>
                 })}
             </TimeContainer>
         </DayContainer>

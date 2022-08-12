@@ -4,6 +4,7 @@ import { DAY_DROPDOWN_OPTIONS, TIME_DROPDOWN_OPTIONS } from '../../utils/utlis';
 import { Button, Typography } from '@mui/material';
 import { useEffect, useState, useContext } from 'react';
 import { AvailabilityContext } from '../../App';
+import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 
 const HTMLForm = styled.form`
 width:100%;
@@ -93,7 +94,8 @@ const Form = () => {
                 <Typography id="form-warning-message" variant='subtitle2' >
                     {message}
                 </Typography>}
-            <Button type='submit' disabled={isSubmitDisabled}>{isSubmitDisabled ? "Please fill all fields" : "Add Availability"}</Button>
+            <Button type='submit' size='small' variant='contained' startIcon={<AddOutlinedIcon />} disabled={isSubmitDisabled}>{isSubmitDisabled ? "Fill all fields" : "Add"}</Button>
+            <Button sx={{ margin: "40px" }} size='small' onClick={() => console.log(context.state)}>Print availability to console</Button>
         </HTMLForm>
     )
 }
