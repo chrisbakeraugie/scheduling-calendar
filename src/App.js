@@ -1,11 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
 import styled from 'styled-components';
 import Week from './calendar/week/Week';
 import React, { useState } from 'react';
-import { DAY_DROPDOWN_OPTIONS, DEFAULT_AVAILABILITY, TIME_DROPDOWN_OPTIONS } from './utils/utlis';
-import Check from './calendar/toolbar/Check';
-import Dropdown from './calendar/toolbar/Dropdown';
+import { DEFAULT_AVAILABILITY } from './utils/utlis';
 import Form from './calendar/toolbar/Form';
 
 const AppContainter = styled.div`

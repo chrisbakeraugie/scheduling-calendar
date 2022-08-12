@@ -31,13 +31,11 @@ const Day = (props) => {
         <DayContainer>
             <div>{props.children}</div>
             <TimeContainer>
-            <HourMarks />
+                <HourMarks />
                 {context.state.map((timeSpan, index) => {
                     if (props.children === timeSpan.day) {
-                        console.log(props.children)
                         let top = (timeSpan.start / 24) * 100;
                         let height = timeSpan.end - timeSpan.start;
-                        console.log(height)
                         return <Block key={index + "" + timeSpan.start} top={top} height={height}>Hello</Block>
                     }
                 })}

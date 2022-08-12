@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import Box from '@mui/material/Box';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
@@ -11,7 +11,7 @@ const BoxSx = {
 }
 
 const Dropdown = ({ label, selection, value, setValue }) => {
-    const dropdownOptions = useMemo(() => selection(), []);
+    const dropdownOptions = useMemo(() => selection(), [selection]);
 
     const handleChange = (event) => {
         setValue(event.target.value)
