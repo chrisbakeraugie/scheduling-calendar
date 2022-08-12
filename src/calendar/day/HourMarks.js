@@ -6,6 +6,9 @@ height:100%;
 width:50%;
 font-size:small;
 text-align:start;
+@media (max-width: 500px) {
+    visibility:hidden;
+}
 `
 
 const Mark = styled.div`

@@ -14,10 +14,25 @@ const AppContainter = styled.div`
   grid-template-rows: repeat(5, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
+  @media (max-width: 500px){
+    height:90vh;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 0.5fr repeat(4, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    width:100vw;
+  }
 `;
 
 const CalendarContainer = styled.div`  
   grid-area: 1 / 2 / 6 / 6; 
+  @media (max-width: 500px){
+    grid-area: 2 / 1 / 6 / 6; 
+    overflow-x:auto;
+    width:100%;
+    height:100%;
+  }
   `
 
 const Toolbar = styled.div`
@@ -25,6 +40,10 @@ const Toolbar = styled.div`
    display:flex;
    margin:auto;
    width:100%;
+   @media (max-width: 500px){
+     grid-area: 1 / 1 / 2 / 6; 
+     max-width:100%;
+  }
   `;
 
 export const AvailabilityContext = React.createContext();
@@ -51,15 +70,15 @@ function App() {
         <CalendarContainer>
           <Week></Week>
         </CalendarContainer>
-        <Modal
-          open={modal.isOpen}
-          onClose={handleCloseModal}
-        >
-          <div>
-            <ModalContents />
-          </div>
-        </Modal>
       </AppContainter>
+      <Modal
+        open={modal.isOpen}
+        onClose={handleCloseModal}
+      >
+        <div>
+          <ModalContents />
+        </div>
+      </Modal>
     </AvailabilityContext.Provider>
   );
 }

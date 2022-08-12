@@ -8,6 +8,10 @@ width:100%;
 height:100%;
 display:flex;
 justify-content:space-evenly;
+@media (max-width: 500px) {
+    overflow:auto;
+    width:300%;
+}
 `;
 
 

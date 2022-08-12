@@ -9,6 +9,11 @@ import HourMarks from './HourMarks';
 const DayContainer = styled.div`
 height:calc(100% - 50px);
 width:14%;
+@media (max-width: 500px) {
+    width:100%;
+    border-right:lightgray solid;
+    height:150%;
+}
 `;
 
 const TimeContainer = styled.div`
@@ -31,7 +36,10 @@ const paperSX = {
     '&:hover': {
         cursor: "pointer",
         backgroundColor: "#ececec"
-    }
+    },
+    '@media (max-width: 500px)': {
+        width: '80%',
+      },
 }
 
 const DayHeader = styled.div`
