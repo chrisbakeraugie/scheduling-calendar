@@ -35,3 +35,18 @@ export const TIME_DROPDOWN_OPTIONS = () => {
     }
     return arr;
 }
+
+export const numberToTime = (number) => {
+    if (number === 0) {
+        return "12 AM"
+    }
+    if (number === 12) {
+        return "12 PM"
+    }
+    if (number > 0 && number < 12) {
+        return number + " AM"
+    }
+    if (number > 12) {
+        return (number - 12) + " PM"
+    }
+}
