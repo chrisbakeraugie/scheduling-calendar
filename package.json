@@ -1,7 +1,7 @@
 {
   "name": "scheduling-calendar",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "homepage": "https://chrisbakeraugie.github.io/",
   "dependencies": {
     "@emotion/react": "^11.10.0",
