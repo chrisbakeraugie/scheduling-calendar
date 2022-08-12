@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Dropdown from './Dropdown';
 import { DAY_DROPDOWN_OPTIONS, TIME_DROPDOWN_OPTIONS } from '../../utils/utlis';
 import { Button, Typography } from '@mui/material';
-import { useEffect, useState, useContext, useCallback } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { AvailabilityContext } from '../../App';
 
 const HTMLForm = styled.form`

@@ -75,7 +75,8 @@ const Day = (props) => {
                                 </StyledText>
                             </Paper>
                         );
-                    }
+                    } 
+                    return <></>
                 })}
             </TimeContainer>
         </DayContainer>
