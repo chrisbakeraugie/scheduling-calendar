@@ -51,7 +51,6 @@ const Day = (props) => {
                         let top = (timeSpan.start / 24) * 100;
                         let height = timeSpan.end - timeSpan.start;
                         height = height * 4 + (height * .15)
-                        // return <Block key={index + "" + timeSpan.start} top={top} height={height}>Available</Block>
                         return (
                             <Paper
                                 key={index + "" + timeSpan.start}

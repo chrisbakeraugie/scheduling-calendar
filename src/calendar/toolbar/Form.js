@@ -18,39 +18,41 @@ const Form = () => {
     const context = useContext(AvailabilityContext);
 
     const updateAvailability = () => {
+        let start = startValue;
+        let end = endValue;
         const dayAvailability = context.state.filter((block) => block.day === dayValue);
         for (let i = dayAvailability.length - 1; i >= 0; i--) {
-            const oldAvailabilityCovered = dayAvailability[i].start >= startValue && dayAvailability[i].end <= endValue;
-            const newAvailabilityCovered = dayAvailability[i].start <= startValue && dayAvailability[i].end >= endValue;
-            const newStartEarlier = dayAvailability[i].start >= startValue && dayAvailability[i].end >= startValue;
-            const newEndLaterThanStart = dayAvailability[i].start >= endValue;
-            const newEndLater = dayAvailability[i].start <= endValue && dayAvailability[i].end <= endValue;
-            const newStartLaterThanEnd = dayAvailability[i].end <= startValue;
-            if (oldAvailabilityCovered) {
+            const startIsBetween = (dayAvailability[i].start <= start) && (dayAvailability[i].end >= start);
+            const endIsBetween = (dayAvailability[i].start <= end) && (dayAvailability[i].end >= end);
+            const newCoversOld = (dayAvailability[i].start >= start) && (dayAvailability[i].end <= end);
+            const oldCoversNew = (dayAvailability[i].start <= start) && (dayAvailability[i].end >= end);
+
+            if (oldCoversNew) {
+                setMessage("This time is already marked \"Available\"");
+                return
+            } else if (newCoversOld) {
+                dayAvailability.splice(i, 1,);
+            } else if (startIsBetween) {
+                start = dayAvailability[i].start;
                 dayAvailability.splice(i, 1);
-            } else if (newAvailabilityCovered) {
-                setMessage("Time slot already available.")
-            } else if (newStartEarlier && !newEndLaterThanStart) {
-                dayAvailability[i].start = startValue;
-            } else if (newEndLater && !newStartLaterThanEnd) {
-                dayAvailability[i].end = endValue;
-            } else {
-                dayAvailability.push({
-                    day: dayValue,
-                    start: startValue,
-                    end: endValue
-                })
+            } else if (endIsBetween) {
+                end = dayAvailability[i].end;
+                dayAvailability.splice(i, 1);
             }
         }
         context.setState((prevState) => {
             let newState = context.state.filter((block) => block.day !== dayValue);
             if (dayAvailability.length > 0) {
-                newState.push(...dayAvailability)
+                newState.push(...dayAvailability, {
+                    day: dayValue,
+                    start: start,
+                    end: end
+                })
             } else {
                 newState.push({
                     day: dayValue,
-                    start: startValue,
-                    end: endValue
+                    start: start,
+                    end: end
                 })
             }
             return newState;
